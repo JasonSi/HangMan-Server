@@ -3,7 +3,7 @@ Hangman game server based on rails.
 
 ## Intro
 
-1. At the very biginning, I prefer to use UUID of every device to distinguish one from another.
+1. At the very beginning, I prefer to use UUID of every device to distinguish one from another.
 2. The authorized app will own an app_key. When it requests the API "startGame", an app_key is needed.
 
 
@@ -13,31 +13,38 @@ Hangman game server based on rails.
 > http://localhost:3000/startGame
 
 POST Data Format:
->{
-  "uid": UUID,
-  "appKey": Auth key
+```json
+{
+  "uid": "BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE",
+  "appKey": "42f25adecf47629878e89e31b2073d1af009c9c76f4140a064..."
 }
+```
 
 Response:
-> {
+```json
+{
   "message": "THE GAME IS ON",
-  "sessionId": session_id,
+  "sessionId": "4ac5de6f59868a427a0667f89452842e",
   "data": {
     "numberOfWordsToGuess": 20,
     "numberOfGuessAllowedForEachWord": 10
   }
 }
+```
 
 ### NextWord
 > http://localhost:3000/nextWord
 
 POST Data Format:
->{
+```json
+{
   "sessionId": "4ac5de6f59868a427a0667f89452842e"
 }
+```
 
 Response:
-> {
+```json
+{
   "sessionId": "4ac5de6f59868a427a0667f89452842e",
   "data": {
     "word": "*****",
@@ -45,36 +52,45 @@ Response:
     "wrongGuessCountOfCurrentWord": 0
   }
 }
+```
 
 ### GuessWord
 > http://localhost:3000/guessWord
 
 POST Data Format:
->{
+```json
+{
   "sessionId": "4ac5de6f59868a427a0667f89452842e",
   "guess": "A"
 }
+```
 
 Response:
-> {
+```json
+{
   "sessionId": "4ac5de6f59868a427a0667f89452842e",
   "data": {
-    "word": "\**A\**",
+    "word": "**A**",
     "totalWordCount": 1,
     "wrongGuessCountOfCurrentWord": 0
   }
 }
+```
+
 
 ### GetResult
 > http://localhost:3000/getResult
 
 POST Data Format:
->{
+```json
+{
   "sessionId": "4ac5de6f59868a427a0667f89452842e"
 }
+```
 
 Response:
-> {
+```json
+{
   "sessionId": "4ac5de6f59868a427a0667f89452842e",
   "data": {
     "totalWordCount": 20,
@@ -83,6 +99,7 @@ Response:
     "score": 280
   }
 }
+```
 
 
 ##  TODO
@@ -93,13 +110,15 @@ Response:
 
 ## Usage
 
-1. Install Ruby/Rails/Mysql
-  I suggest installing ruby by compiling the source code.
+1. Install Ruby/Rails/Mysql.
 
-```bash
-  sudo apt-get install rails
-  sudo apt-get install mysqlclient mysqlserver libmysqlclient-dev
-```
+    I suggest installing ruby by compiling the source code.And then
+
+    ```bash
+      sudo apt-get install rails
+      sudo apt-get install mysqlclient mysqlserver libmysqlclient-dev
+    ```
+
 2. Use **ruby -v** , **gem -v** to ensure it is installed correctly.
 3. Change the source of gem with [Ruby Taobao](https://ruby.taobao.org) or [Ruby-China](https://gems.ruby-china.org/).
 4. Run **sudo gem install bundle** to install **bundler** .
