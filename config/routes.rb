@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :players, except: [:new, :edit, :index]
+  resources :players, only: [:update, :show]
   post '/startGame' => 'session#start_game'
   post '/nextWord' => 'session#next_word'
   post '/guessWord' => 'session#guess_word'

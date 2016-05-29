@@ -124,6 +124,14 @@ Response:
 4. Run **sudo gem install bundle** to install **bundler** .
 5. Git clone this repo and run **bundle install** .
 6. Set your MySQL username and password.
+
+  - mysql -u root -p
+  - CREATE USER hangman IDENTIFIED BY 'hangwoman';
+  - GRANT ALL ON hangman_dev.* TO hangman;
+  - GRANT ALL ON hangman.* TO hangman;
+  - GRANT ALL ON hangman_test.* TO hangman;
+  - flush privileges;
+
 7. Run **rake db:migrate** for migration.
 8. Run **rake db:setup** to initialize the database.
 9. Run **rails server** or **rails s** to start server.

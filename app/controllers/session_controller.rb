@@ -6,22 +6,22 @@ class SessionController < ApplicationController
     # 如果未授权，找不到对应的key，则不予注册
     return render json: {message: 'No access!'} if app.nil?
 
-    t = Player.find_by_uid prms['uid']
+    player = Player.find_by_uid prms['uid']
     # 如果用户不存在，则新建这个用户
-    if t.nil?
-      player = Player.new
-      player.uid = prms['uid']
-      unless player.save
+    if player.nil?
+      new_player = Player.new
+      new_player.uid = prms['uid']
+      unless new_player.save
         return render json: {message: 'Wrong uid'}
       end
-      t = player
+      player = new_player
     end
 
     # 此处应该关闭上个回话，初始化游戏
     reset_session
 
-    session[:uid] = t.uid
-    session[:player_id] = t.id
+    session[:uid] = player.uid
+    session[:player_id] = player.id
     render json: game_is_on(session[:session_id])
   end
 
