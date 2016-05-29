@@ -58,8 +58,8 @@ class SessionController < ApplicationController
         message: "THE GAME IS ON",
         sessionId: session_id,
         data: {
-           numberOfWordsToGuess: 20,
-           numberOfGuessAllowedForEachWord: 10
+          numberOfWordsToGuess: 20,
+          numberOfGuessAllowedForEachWord: 10
         }
       }
     end
@@ -81,7 +81,7 @@ class SessionController < ApplicationController
         data: {
           word: "**#{guess}**",
           totalWordCount: 1,
-          wrongGuessCountOfCurrentWord: 2
+          wrongGuessCountOfCurrentWord: 0
         }
       }
     end
