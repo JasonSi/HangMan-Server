@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :players, except: [:new, :edit, :index]
-  post '/game/start' => 'session#game_start'
+  post '/startGame' => 'session#start_game'
+  post '/nextWord' => 'session#next_word'
+  post '/guessWord' => 'session#guess_word'
+  post '/getResult' => 'session#get_result'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
