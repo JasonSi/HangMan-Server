@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529114414) do
+ActiveRecord::Schema.define(version: 20160529140705) do
+
+  create_table "app_keys", force: :cascade do |t|
+    t.string   "key",        limit: 255
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "players", force: :cascade do |t|
-    t.string   "player_id",  limit: 255
+    t.string   "uid",        limit: 255
     t.string   "nick_name",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
