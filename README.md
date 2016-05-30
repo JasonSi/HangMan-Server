@@ -9,7 +9,7 @@ Hangman game server based on rails.
 
 ## API
 
-### GameStart
+### StartGame
 > http://localhost:3000/startGame
 
 POST Data Format:
@@ -101,6 +101,32 @@ Response:
 }
 ```
 
+### SubmitResult
+> http://localhost:3000/submitResult
+
+POST Data Format:
+```json
+{
+  "sessionId": "4ac5de6f59868a427a0667f89452842e"
+}
+```
+
+Response:
+```json
+{
+  "message": "GAME OVER",
+  "sessionId": "4ac5de6f59868a427a0667f89452842e",
+  "data": {
+    "uid": "BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE",
+    "totalWordCount": 20,
+    "correctWordCount": 18,
+    "totalWrongGuessCount": 80,
+    "score": 280,
+    "datetime": "2016-05-30T12:18:00.427+08:00"
+  }
+}
+```
+
 
 ##  TODO
 
@@ -110,7 +136,7 @@ Response:
 
 ## Usage
 
-1. Install Ruby/Rails/Mysql.
+1. Install Ruby and Mysql.
 
     I suggest installing ruby by compiling the source code.And then
 
