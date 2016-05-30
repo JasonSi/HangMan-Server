@@ -22,6 +22,7 @@ class SessionController < ApplicationController
 
     session[:uid] = player.uid
     session[:player_id] = player.id
+    game = Game.new(session[:session_id])
     render json: game_is_on(session[:session_id])
   end
 
