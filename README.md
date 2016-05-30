@@ -115,15 +115,19 @@ Response:
     I suggest installing ruby by compiling the source code.And then
 
     ```bash
-      sudo apt-get install rails
       sudo apt-get install mysqlclient mysqlserver libmysqlclient-dev
     ```
 
 2. Use **ruby -v** , **gem -v** to ensure it is installed correctly.
 3. Change the source of gem with [Ruby Taobao](https://ruby.taobao.org) or [Ruby-China](https://gems.ruby-china.org/).
-4. Run **sudo gem install bundle** to install **bundler** .
-5. Git clone this repo and run **bundle install** .
-6. Set your MySQL username and password.
+4. Install Rails.
+
+  ```bash
+    sudo gem install rails
+  ```
+5. Run **sudo gem install bundle** to install **bundler** .
+6. Git clone this repo and run **bundle install** .
+7. Set your MySQL username and password.
 
   - mysql -u root -p
   - CREATE USER hangman IDENTIFIED BY 'hangwoman';
@@ -132,6 +136,6 @@ Response:
   - GRANT ALL ON hangman_test.* TO hangman;
   - flush privileges;
 
-7. Run **rake db:migrate** for migration.
-8. Run **rake db:setup** to initialize the database.
-9. Run **rails server** or **rails s** to start server.
+8. Run **rake db:migrate** for migration.
+9. Run **rake db:setup** to initialize the database.
+10. Run **rails server** or **rails s** to start server.

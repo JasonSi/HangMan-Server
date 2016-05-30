@@ -52,6 +52,15 @@ class SessionController < ApplicationController
     end
   end
 
+  def submit_result
+    prms = params.permit('sessionId')
+    if prms['sessionId'] == session[:session_id]
+      render json: submit_your_result
+    else
+      render json: {message: 'Wrong request!'}
+    end
+  end
+
   private
     def game_is_on(session_id)
       {
@@ -97,4 +106,20 @@ class SessionController < ApplicationController
         }
       }
     end
+
+    def submit_your_result
+      {
+        message: "GAME OVER",
+        sessionId: session[:session_id],
+        data: {
+          uid: session[:uid],
+          totalWordCount: 20,
+          correctWordCount: 18,
+          totalWrongGuessCount: 80,
+          score: 280,
+          datetime: Time.new
+        }
+      }
+    end
+
 end
