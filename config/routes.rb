@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :players, only: [:update, :show]
-  post '/startGame' => 'session#start_game'
-  post '/nextWord' => 'session#next_word'
-  post '/guessWord' => 'session#guess_word'
-  post '/getResult' => 'session#get_result'
-  post '/submitResult' => 'session#submit_result'
+  post 'startGame' => 'session#start_game'
+  post 'nextWord' => 'session#next_word'
+  post 'guessWord' => 'session#guess_word'
+  post 'getResult' => 'session#get_result'
+  post 'submitResult' => 'session#submit_result'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
