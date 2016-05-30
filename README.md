@@ -162,6 +162,6 @@ Response:
   - GRANT ALL ON hangman_test.* TO hangman;
   - flush privileges;
 
-8. Run **rake db:migrate** for migration.
-9. Run **rake db:setup** to initialize the database.
+8. Run **rake db:setup** to initialize the database.
+9. Run **rake db:seed** to insert vocabularies.
 10. Run **rails server** or **rails s** to start server.
