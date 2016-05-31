@@ -53,7 +53,7 @@ module GameHelper
 
   def res_make_a_guess(data, guess)
     {
-      message: "CURRENT WORD IS HERE",
+      message: "YOUR GUESS IS " + guess,
       word: data[:current_word],
       totalWordCount: data[:total_word_count],
       wrongGuessCountOfCurrentWord: data[:wrong_guess_count_of_current_word]

@@ -57,7 +57,6 @@ class SessionController < ApplicationController
     end
 
     def set_player(prms)
-
       @player = Player.find_by_uid prms['uid']
       # 如果用户不存在，则新建这个用户
       if @player.nil?

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'guessWord' => 'session#guess_word'
   post 'getResult' => 'session#get_result'
   post 'submitResult' => 'session#submit_result'
+  post 'quitGame' => 'session#quit_game'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

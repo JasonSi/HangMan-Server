@@ -16,7 +16,7 @@ POST Data Format:
 ```json
 {
   "uid": "BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE",
-  "appKey": "42f25adecf47629878e89e31b2073d1af009c9c76f4140a064..."
+  "appKey": "42725adecf47629878e89e31b2073d1af009c9c76f4140a064..."
 }
 ```
 
@@ -24,11 +24,8 @@ Response:
 ```json
 {
   "message": "THE GAME IS ON",
-  "sessionId": "4ac5de6f59868a427a0667f89452842e",
-  "data": {
-    "numberOfWordsToGuess": 20,
-    "numberOfGuessAllowedForEachWord": 10
-  }
+  "numberOfWordsToGuess": 20,
+  "numberOfGuessAllowedForEachWord": 10
 }
 ```
 
@@ -37,20 +34,16 @@ Response:
 
 POST Data Format:
 ```json
-{
-  "sessionId": "4ac5de6f59868a427a0667f89452842e"
-}
+/* Nothing Needed */
 ```
 
 Response:
 ```json
 {
-  "sessionId": "4ac5de6f59868a427a0667f89452842e",
-  "data": {
-    "word": "*****",
-    "totalWordCount": 1,
-    "wrongGuessCountOfCurrentWord": 0
-  }
+  "message": "THIS IS A NEW WORD",
+  "word": "*****",
+  "totalWordCount": 1,
+  "wrongGuessCountOfCurrentWord": 0
 }
 ```
 
@@ -60,7 +53,6 @@ Response:
 POST Data Format:
 ```json
 {
-  "sessionId": "4ac5de6f59868a427a0667f89452842e",
   "guess": "A"
 }
 ```
@@ -68,12 +60,10 @@ POST Data Format:
 Response:
 ```json
 {
-  "sessionId": "4ac5de6f59868a427a0667f89452842e",
-  "data": {
-    "word": "**A**",
-    "totalWordCount": 1,
-    "wrongGuessCountOfCurrentWord": 0
-  }
+  "message": "YOUR GUESS IS A",
+  "word": "**A**",
+  "totalWordCount": 1,
+  "wrongGuessCountOfCurrentWord": 0
 }
 ```
 
@@ -83,21 +73,17 @@ Response:
 
 POST Data Format:
 ```json
-{
-  "sessionId": "4ac5de6f59868a427a0667f89452842e"
-}
+/* Nothing Needed */
 ```
 
 Response:
 ```json
 {
-  "sessionId": "4ac5de6f59868a427a0667f89452842e",
-  "data": {
-    "totalWordCount": 20,
-    "correctWordCount": 18,
-    "totalWrongGuessCount": 80,
-    "score": 280
-  }
+  "message": "THIS IS YOUR RESULT",
+  "totalWordCount": 20,
+  "correctWordCount": 18,
+  "totalWrongGuessCount": 80,
+  "score": 280
 }
 ```
 
@@ -106,24 +92,34 @@ Response:
 
 POST Data Format:
 ```json
-{
-  "sessionId": "4ac5de6f59868a427a0667f89452842e"
-}
+/* Nothing Needed */
 ```
 
 Response:
 ```json
 {
   "message": "GAME OVER",
-  "sessionId": "4ac5de6f59868a427a0667f89452842e",
-  "data": {
-    "uid": "BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE",
-    "totalWordCount": 20,
-    "correctWordCount": 18,
-    "totalWrongGuessCount": 80,
-    "score": 280,
-    "datetime": "2016-05-30T12:18:00.427+08:00"
-  }
+  "uid": "BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE",
+  "totalWordCount": 20,
+  "correctWordCount": 18,
+  "totalWrongGuessCount": 80,
+  "score": 280,
+  "datetime": "2016-05-30T12:18:00.427+08:00"
+}
+```
+
+### QuitGame
+> http://localhost:3000/quitGame
+
+POST Data Format:
+```json
+/* Nothing Needed */
+```
+
+Response:
+```json
+{
+  "message": "EXIT"
 }
 ```
 
