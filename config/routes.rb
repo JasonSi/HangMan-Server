@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post 'startGame' => 'session#start_game'
   post 'nextWord' => 'session#next_word'
   post 'guessWord' => 'session#guess_word'
-  post 'getResult' => 'session#get_result'
+  # post 'getResult' => 'session#get_result'
   post 'submitResult' => 'session#submit_result'
   post 'quitGame' => 'session#quit_game'
   # The priority is based upon order of creation: first created -> highest priority.

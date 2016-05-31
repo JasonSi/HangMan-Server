@@ -68,7 +68,7 @@ Response:
 ```
 
 
-### GetResult
+<!-- ### GetResult
 > http://localhost:3000/getResult
 
 POST Data Format:
@@ -82,10 +82,10 @@ Response:
   "message": "THIS IS YOUR RESULT",
   "totalWordCount": 20,
   "correctWordCount": 18,
-  "totalWrongGuessCount": 80,
-  "score": 280
+  "totalWrongGuessCount": 90,
+  "score": 270
 }
-```
+``` -->
 
 ### SubmitResult
 > http://localhost:3000/submitResult
@@ -102,9 +102,8 @@ Response:
   "uid": "BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE",
   "totalWordCount": 20,
   "correctWordCount": 18,
-  "totalWrongGuessCount": 80,
-  "score": 280,
-  "datetime": "2016-05-30T12:18:00.427+08:00"
+  "totalWrongGuessCount": 90,
+  "score": 270
 }
 ```
 

@@ -1,5 +1,5 @@
 class SessionController < ApplicationController
-  before_action :wtf
+  before_action :wtf, except: [:start_game]
   before_action :session_access, except: [:start_game, :quit_game]
 
   include GameHelper
@@ -15,29 +15,36 @@ class SessionController < ApplicationController
     reset_session
     session[:uid] = @player.uid
     session[:player_id] = @player.id
-    session[:game_data] = game_is_on(@player.uid)
+    session[:game_data] = game_is_on(@player.uid, @player.id)
     render json: res_game_is_on(session[:game_data])
   end
 
   def next_word
-    session[:game_data] = give_me_a_word(session[:game_data])
-    render json: res_give_me_a_word(session[:game_data])
+    if session[:game_data][:number_of_words_to_guess] == session[:game_data][:total_word_count]
+      render json: {message: "No Words Left!"}
+    else
+      session[:game_data] = give_me_a_word(session[:game_data])
+      render json: res_give_me_a_word(session[:game_data])
+    end
   end
 
   def guess_word
     prms = params.permit('guess')
-    session[:game_data] = make_a_guess(session[:game_data])
-    render json: res_make_a_guess(session[:game_data])
+    session[:game_data] = make_a_guess(session[:game_data], prms['guess'])
+    render json: res_make_a_guess(session[:game_data], prms['guess'])
   end
 
-  def get_result
-    session[:game_data] = get_your_result(session[:game_data])
-    render json: res_get_your_result(session[:game_data])
-  end
+  # def get_result
+  #   session[:game_data] = get_your_result(session[:game_data])
+  #   render json: res_get_your_result(session[:game_data])
+  # end
 
   def submit_result
-    session[:game_data] = submit_your_result(session[:game_data])
-    render json: res_submit_your_result(session[:game_data])
+    if submit_your_result(session[:game_data])
+      render json: res_submit_your_result(session[:game_data])
+    else
+      render json: {message: "Score Saving Failed!"}
+    end
   end
 
   def quit_game
