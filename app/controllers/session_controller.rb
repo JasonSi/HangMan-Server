@@ -30,20 +30,15 @@ class SessionController < ApplicationController
 
   def guess_word
     prms = params.permit('guess')
-    session[:game_data] = make_a_guess(session[:game_data], prms['guess'])
-    render json: res_make_a_guess(session[:game_data], prms['guess'])
+    session[:game_data] = make_a_guess(session[:game_data], prms['guess'].upcase)
+    render json: res_make_a_guess(session[:game_data], prms['guess'].upcase)
   end
-
-  # def get_result
-  #   session[:game_data] = get_your_result(session[:game_data])
-  #   render json: res_get_your_result(session[:game_data])
-  # end
 
   def submit_result
     if submit_your_result(session[:game_data])
       render json: res_submit_your_result(session[:game_data])
     else
-      render json: {message: "Score Saving Failed!"}
+      render json: {message: 'Score Saving Failed!'}
     end
   end
 
@@ -59,7 +54,7 @@ class SessionController < ApplicationController
 
 
     def wtf
-      # session[:game_data]里的KEY有时是Symbol有时是String,处理一下，都规范成Symbol
+      # session[:game_data]里的Key有时是Symbol有时是String,处理一下，都规范成Symbol
       session[:game_data] = session[:game_data].inject({}){|h,(k,v)| h[k.to_sym] = v; h}
     end
 

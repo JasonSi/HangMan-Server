@@ -33,11 +33,12 @@ module GameHelper
 
   def make_a_guess data, guess
     if data[:wrong_guess_count_of_current_word] == data[:number_of_guess_allowed_for_each_word]
-      # 如果猜错直接返回原数据
+      # 如果用完次数直接返回原数据
       return data
     end
-
-    if data[:current_word].include?(guess)
+    if guess.length != 1
+      flag = false
+    elsif data[:current_word].include?(guess)
       # 如果这个字母是已经猜过并正确的直接算猜错，正常情况下不会出现这种
       flag = false
     elsif data[:original_word].include?(guess)

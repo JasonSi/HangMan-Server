@@ -9,7 +9,7 @@ Hangman game server based on rails.
 
 ## API
 
-### StartGame
+### Start Game
 > http://localhost:3000/startGame
 
 POST Data Format:
@@ -23,13 +23,13 @@ POST Data Format:
 Response:
 ```json
 {
-  "message": "THE GAME IS ON",
+  "message": "The Game Is On",
   "numberOfWordsToGuess": 20,
   "numberOfGuessAllowedForEachWord": 10
 }
 ```
 
-### NextWord
+### Next Word
 > http://localhost:3000/nextWord
 
 POST Data Format:
@@ -40,14 +40,17 @@ POST Data Format:
 Response:
 ```json
 {
-  "message": "THIS IS A NEW WORD",
+  "message": "This Is A New Word",
   "word": "*****",
+  "wrongGuessCountOfCurrentWord": 0,
   "totalWordCount": 1,
-  "wrongGuessCountOfCurrentWord": 0
+  "correctWordCount": 0,
+  "totalWrongGuessCount": 0,
+  "score": 0
 }
 ```
 
-### GuessWord
+### Guess Word
 > http://localhost:3000/guessWord
 
 POST Data Format:
@@ -60,34 +63,17 @@ POST Data Format:
 Response:
 ```json
 {
-  "message": "YOUR GUESS IS A",
+  "message": "Your Guess Is A",
   "word": "**A**",
+  "wrongGuessCountOfCurrentWord": 0,
   "totalWordCount": 1,
-  "wrongGuessCountOfCurrentWord": 0
+  "correctWordCount": 0,
+  "totalWrongGuessCount": 0,
+  "score": 0
 }
 ```
 
-
-<!-- ### GetResult
-> http://localhost:3000/getResult
-
-POST Data Format:
-```json
-/* Nothing Needed */
-```
-
-Response:
-```json
-{
-  "message": "THIS IS YOUR RESULT",
-  "totalWordCount": 20,
-  "correctWordCount": 18,
-  "totalWrongGuessCount": 90,
-  "score": 270
-}
-``` -->
-
-### SubmitResult
+### Submit Result
 > http://localhost:3000/submitResult
 
 POST Data Format:
@@ -98,7 +84,7 @@ POST Data Format:
 Response:
 ```json
 {
-  "message": "GAME OVER",
+  "message": "Game Over",
   "uid": "BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE",
   "totalWordCount": 20,
   "correctWordCount": 18,
@@ -107,7 +93,7 @@ Response:
 }
 ```
 
-### QuitGame
+### Quit Game
 > http://localhost:3000/quitGame
 
 POST Data Format:
@@ -118,16 +104,63 @@ POST Data Format:
 Response:
 ```json
 {
-  "message": "EXIT"
+  "message": "Exit"
 }
 ```
+
+## Wrong Request
+
+### Wrong AppKey
+Response:
+```json
+{
+  "message": "No Access!"
+}
+```
+**Reason:** Because this POST request did not get server's authority.You need to insert an app_key into the table app_keys, then the value of column **key** is what you need to carry.
+
+### Wrong Format of UUID
+Response:
+```json
+{
+  "message": "Wrong UID"
+}
+```
+**Reason:** Maybe the UUID in the request is illegal.(Actually there is no restrictions for now :)
+
+### No Words Left
+Response:
+```json
+{
+  "message": "No Words Left!"
+}
+```
+**Reason:** This means you have run out words.
+
+### Submit Result Failure
+Response:
+```json
+{
+  "message": "Score Saving Failed!"
+}
+```
+**Reason:** Maybe it has trouble with database.
+
+### Session Close
+Response:
+```json
+{
+  "message": "No Session!"
+}
+```
+**Reason:** Maybe just quit this game, or Cookie missing.
 
 
 ##  TODO
 
-- Add session function.  *ok*
-- Create a table named "app_keys" to store keys for verifying the client. *ok*
-- Add the real game logic.
+- Add session function.  *OK*
+- Create a table named "app_keys" to store keys for verifying the client. *OK*
+- Add the real game logic. *OK*
 
 ## Usage
 
