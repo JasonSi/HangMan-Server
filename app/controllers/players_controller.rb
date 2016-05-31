@@ -1,31 +1,11 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :update, :destroy]
-
-  # GET /players
-  # GET /players.json
-  # def index
-  #   @players = Player.all
-  #
-  #   render json: @players
-  # end
+  before_action :set_player, only: [:show, :update]
 
   # GET /players/1
   # GET /players/1.json
   def show
     render json: @player
   end
-
-  # POST /players
-  # POST /players.json
-  # def create
-  #   @player = Player.new(player_params)
-  #
-  #   if @player.save
-  #     render json: @player, status: :created, location: @player
-  #   else
-  #     render json: @player.errors, status: :unprocessable_entity
-  #   end
-  # end
 
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
@@ -39,13 +19,12 @@ class PlayersController < ApplicationController
     end
   end
 
-  # DELETE /players/1
-  # DELETE /players/1.json
-  # def destroy
-  #   @player.destroy
-  #
-  #   head :no_content
-  # end
+  def feedback
+    prms = params.permit('email','content')
+    p prms['email']
+    p prms['content']
+    render json: {message: 'Feedback Success!'}
+  end
 
   private
 
@@ -54,7 +33,6 @@ class PlayersController < ApplicationController
     end
 
     def player_params
-      # params[:player]
       params.require(:player).permit(:nick_name)
     end
 end

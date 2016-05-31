@@ -108,6 +108,25 @@ Response:
 }
 ```
 
+### Feedback
+> http://localhost:3000/feedback
+
+POST Data Format:
+```json
+{
+  "email": "me@jasonsi.com",
+  "content": "你可真棒！"
+}
+```
+
+Response:
+```json
+{
+  "message": "Feedback Success!"
+}
+```
+
+
 ## Wrong Request
 
 ### Wrong AppKey
