@@ -188,7 +188,7 @@ Response:
     I suggest installing ruby by compiling the source code.And then
 
     ```bash
-      sudo apt-get install mysqlclient mysqlserver libmysqlclient-dev
+      sudo apt-get install mysql-client mysql-server libmysqlclient-dev
     ```
 
 2. Use **ruby -v** , **gem -v** to ensure it is installed correctly.
