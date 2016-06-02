@@ -36,3 +36,6 @@ bower.json
 
 # byebug 调试记录
 .byebug_history
+
+# 环境变量
+config/ext/local_env.yml
