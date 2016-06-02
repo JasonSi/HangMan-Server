@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
-  before_action :wtf, except: [:start_game]
   before_action :session_access, except: [:start_game, :quit_game]
+  before_action :wtf, except: [:start_game]
 
   include GameHelper
   def start_game
