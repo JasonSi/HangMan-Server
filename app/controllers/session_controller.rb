@@ -59,10 +59,11 @@ class SessionController < ApplicationController
     end
 
     def set_player(prms)
-      @player = Player.find_by_uid prms['uid']
+      # UID全部采用大写储存，如果查找小写的，就全部转换成大写再查找
+      @player = Player.find_by_uid prms['uid'].upcase
       # 如果用户不存在，则新建这个用户
       if @player.nil?
-        new_player = Player.new(uid: prms['uid'])
+        new_player = Player.new(uid: prms['uid'].upcase)
         unless new_player.save
           return false
         end
