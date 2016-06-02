@@ -21,9 +21,12 @@ class PlayersController < ApplicationController
 
   def feedback
     prms = params.permit('email','content')
-    p prms['email']
-    p prms['content']
-    render json: {message: 'Feedback Success!'}
+    @feedback = Feedback.new(prms)
+    if @feedback.save
+      render json: {message: 'Feedback Success!'}
+    else
+      render json: {message: 'Feedback Failed!'}
+    end
   end
 
   private

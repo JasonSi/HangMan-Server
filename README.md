@@ -9,7 +9,7 @@ Hangman game server based on rails.
 
 ## API
 
-### Start Game
+#### Start Game
 > http://localhost:3000/startGame
 
 POST Data Format:
@@ -29,7 +29,7 @@ Response:
 }
 ```
 
-### Next Word
+#### Next Word
 > http://localhost:3000/nextWord
 
 POST Data Format:
@@ -50,7 +50,7 @@ Response:
 }
 ```
 
-### Guess Word
+#### Guess Word
 > http://localhost:3000/guessWord
 
 POST Data Format:
@@ -73,7 +73,7 @@ Response:
 }
 ```
 
-### Submit Result
+#### Submit Result
 > http://localhost:3000/submitResult
 
 POST Data Format:
@@ -93,7 +93,7 @@ Response:
 }
 ```
 
-### Quit Game
+#### Quit Game
 > http://localhost:3000/quitGame
 
 POST Data Format:
@@ -108,7 +108,7 @@ Response:
 }
 ```
 
-### Feedback
+#### Feedback
 > http://localhost:3000/feedback
 
 POST Data Format:
@@ -129,7 +129,7 @@ Response:
 
 ## Wrong Request
 
-### Wrong AppKey
+#### Wrong AppKey
 Response:
 ```json
 {
@@ -138,7 +138,7 @@ Response:
 ```
 **Reason:** Because this POST request did not get server's authority.You need to insert an app_key into the table app_keys, then the value of column **key** is what you need to carry.
 
-### Wrong Format of UUID
+#### Wrong Format of UUID
 Response:
 ```json
 {
@@ -147,7 +147,7 @@ Response:
 ```
 **Reason:** Maybe the UUID in the request is illegal.(Actually there is no restrictions for now :)
 
-### No Words Left
+#### No Words Left
 Response:
 ```json
 {
@@ -156,7 +156,7 @@ Response:
 ```
 **Reason:** This means you have run out words.
 
-### Submit Result Failure
+#### Submit Result Failure
 Response:
 ```json
 {
@@ -165,7 +165,7 @@ Response:
 ```
 **Reason:** Maybe it has trouble with database.
 
-### Session Close
+#### Session Close
 Response:
 ```json
 {
@@ -174,12 +174,31 @@ Response:
 ```
 **Reason:** Maybe just quit this game, or Cookie missing.
 
+#### Feedback Failed
+Response:
+```json
+{
+  "message": "Feedback Failed!"
+}
+```
+**Reason:** Maybe the email or content is illegal.
+
+
+## Parameters
+- **NumberOfWordsToGuess:** Total words count to guess.
+- **NumberOfGuessAllowedForEachWord:** *Number* chances to guess wrong letter for each word.
+- **TotalWordCount:** Words have been guessed till now.
+- **CorrectWordCount:** Words have been cleared till now.
+- **TotalWrongGuessCount:** Total wrong guesses from beginning to now.
 
 ##  TODO
 
 - Add session function.  *OK*
 - Create a table named "app_keys" to store keys for verifying the client. *OK*
 - Add the real game logic. *OK*
+- Save the feedback and Email it to myself.
+- Give a regex to validate app_key and email.
+
 
 ## Usage
 

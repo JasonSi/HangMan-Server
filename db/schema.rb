@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530103621) do
+ActiveRecord::Schema.define(version: 20160602060601) do
 
   create_table "app_keys", force: :cascade do |t|
     t.string   "key",        limit: 255
     t.string   "title",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string   "email",      limit: 255
+    t.text     "content",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "players", force: :cascade do |t|
