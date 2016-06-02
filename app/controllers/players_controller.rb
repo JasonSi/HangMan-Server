@@ -23,6 +23,7 @@ class PlayersController < ApplicationController
     prms = params.permit('email','content')
     @feedback = Feedback.new(prms)
     if @feedback.save
+      FeedbackMailer.send_feedback(@feedback).deliver_now
       render json: {message: 'Feedback Success!'}
     else
       render json: {message: 'Feedback Failed!'}

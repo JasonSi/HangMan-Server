@@ -196,7 +196,7 @@ Response:
 - Add session function.  *OK*
 - Create a table named "app_keys" to store keys for verifying the client. *OK*
 - Add the real game logic. *OK*
-- Save the feedback and Email it to myself.
+- Save the feedback and Email it to myself. *OK*
 - Give a regex to validate app_key and email.
 
 
@@ -230,4 +230,10 @@ Response:
 
 8. Run **rake db:setup** to initialize the database.
 9. Run **rake db:seed** to insert vocabularies.
-10. Run **rails server** or **rails s** to start server.
+10. Create a file named **.env** in the root.There are some ENV variables in it like
+
+    ```
+    email_username=example@domain.com
+    email_password=somepassword
+    ```
+11. Run **rails server** or **rails s** to start server.
