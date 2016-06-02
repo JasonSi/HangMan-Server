@@ -145,7 +145,7 @@ Response:
   "message": "Wrong UID"
 }
 ```
-**Reason:** Maybe the UUID in the request is illegal.(Actually there is no restrictions for now :)
+**Reason:** Maybe the UUID in the request is illegal.(Its format should be like this: BE5BA3D0-971C-4427-9ECF-E2D1ABCC66BE)
 
 #### No Words Left
 Response:
@@ -181,7 +181,7 @@ Response:
   "message": "Feedback Failed!"
 }
 ```
-**Reason:** Maybe the email or content is illegal.
+**Reason:** Maybe the format of email or content is illegal.
 
 
 ## Parameters
@@ -197,7 +197,7 @@ Response:
 - Create a table named "app_keys" to store keys for verifying the client. *OK*
 - Add the real game logic. *OK*
 - Save the feedback and Email it to myself. *OK*
-- Give a regex to validate app_key and email.
+- Give a regex to validate app_key and email. *OK*
 
 
 ## Usage
@@ -211,7 +211,7 @@ Response:
     ```
 
 2. Use **ruby -v** , **gem -v** to ensure it is installed correctly.
-3. Change the source of gem with [Ruby Taobao](https://ruby.taobao.org) or [Ruby-China](https://gems.ruby-china.org/).
+3. Change the source of gem with [Ruby-Taobao](https://ruby.taobao.org) or [Ruby-China](https://gems.ruby-china.org/).
 4. Install Rails.
 
   ```bash
