@@ -6,6 +6,7 @@ class SessionController < ApplicationController
   def start_game
     # 只允许传递appKey和uid参数
     prms = params.permit('uid','appKey')
+    return render json: {message: 'Wrong Parameters!'} if prms['uid'].nil? || prms['appKey'].nil?
     # 如果未授权，找不到对应的key，则不予注册
     app = AppKey.find_by_key prms['appKey']
     return render json: {message: 'No Access!'} if app.nil?
@@ -30,6 +31,7 @@ class SessionController < ApplicationController
 
   def guess_word
     prms = params.permit('guess')
+    return render json: {message: 'Wrong Parameters!'} if prms['guess'].nil?
     session[:game_data] = make_a_guess(session[:game_data], prms['guess'].upcase)
     render json: res_make_a_guess(session[:game_data], prms['guess'].upcase)
   end
