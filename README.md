@@ -3,7 +3,7 @@ Hangman game server based on rails.
 
 ## Intro
 
-1. At the very beginning, I prefer to use UUID of every device to distinguish one from another.
+1. At the very beginning, I prefer to use UUID of every device to distinguish one from another, and just one session to keep a game.
 2. The authorized app will own an app_key. When it requests the API "startGame", an app_key is needed.
 
 
