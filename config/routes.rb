@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :players, only: [:update, :show]
+  get '/' => 'index#index'
   post 'startGame' => 'session#start_game'
   post 'nextWord' => 'session#next_word'
   post 'guessWord' => 'session#guess_word'
