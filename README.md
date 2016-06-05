@@ -198,6 +198,8 @@ Response:
 - Add the real game logic. *OK*
 - Save the feedback and Email it to myself. *OK*
 - Give a regex to validate app_key and email. *OK*
+- Add a homepage for welcome new users.
+- Solve the problem about precompile.
 
 
 ## Usage

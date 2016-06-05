@@ -1,2 +1,7 @@
-Nothing is here.
-Just a default page.
+<h1>Welcome to Hangman</h1>
+<form action="/" method="post">
+  <input type="email" placeholder="Apple ID" id="apple_id" name="apple_id" value="<%= @apple_id %>">
+  <input type="button" id="apply_submit" value="申请">
+</form>
+
+<%= javascript_include_tag 'index' %>
